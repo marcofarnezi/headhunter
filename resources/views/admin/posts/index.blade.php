@@ -23,6 +23,6 @@
         </tr>
         @endforeach
     </table>
-    {{ $posts->render() }}
+    {!! $posts->render() !!}
 
 @stop
