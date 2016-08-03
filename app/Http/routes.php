@@ -11,28 +11,18 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController'
 ]);
 
-Route::get('teste/{nome}', 'TesteController@index');
-Route::get('notas', 'TesteController@notas');
-
-Route::get('/', 'BlogController@index');
-Route::get('blog', 'PostsController@index');
-
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
-    Route::group(['prefix' => 'posts'], function() {
-        Route::get('', ['as' =>'admin.posts.index', 'uses' => 'PostsAdminController@index']);
-        Route::get('create', ['as' => 'admin.posts.create', 'uses' =>'PostsAdminController@create']);
-        Route::post('store', ['as' => 'admin.posts.store', 'uses' =>'PostsAdminController@store']);
-        Route::get('edit/{id}', ['as' => 'admin.posts.edit', 'uses' =>'PostsAdminController@edit']);
-        Route::put('update/{id}', ['as' => 'admin.posts.update', 'uses' =>'PostsAdminController@update']);
-        Route::get('destroy/{id}', ['as' => 'admin.posts.destroy', 'uses' =>'PostsAdminController@destroy']);
-    });
+Route::group(['prefix' => '', 'middleware' => 'auth'], function() {    
+    Route::get('', ['as' =>'admin.produtos.index', 'uses' => 'ProdutosController@index']);
+    Route::get('create', ['as' => 'admin.produtos.create', 'uses' =>'ProdutosController@create']);    
+    Route::post('store', ['as' => 'admin.produtos.store', 'uses' =>'ProdutosController@store']);
+    Route::get('edit/{id}', ['as' => 'admin.produtos.edit', 'uses' =>'ProdutosController@edit']);
+    Route::put('update/{id}', ['as' => 'admin.produtos.update', 'uses' =>'ProdutosController@update']);
+    Route::get('destroy/{id}', ['as' => 'admin.produtos.destroy', 'uses' =>'ProdutosController@destroy']);
+    Route::get('descricao/{id}', ['as' => 'admin.produtos.descricao', 'uses' =>'ProdutosController@descricao']);
 });
